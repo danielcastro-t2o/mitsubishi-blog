@@ -451,11 +451,11 @@ ul, ol {
 .breadcrumb__item--current {
   color: var(--color-gray-900);
   font-weight: 500;
-  /* Solo truncar en pantallas muy pequeñas (<360px) */
-  max-width: 50vw;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /* ── 9. BLOG HERO ─────────────────────────────────────────────── */
@@ -1585,76 +1585,27 @@ ul, ol {
   flex-wrap: wrap;
   align-items: center;
 }
-/* Share buttons — diseño moderno pill con ícono */
+/* Share buttons — icono plano sin círculo */
 .share-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1.5px solid var(--color-gray-200);
-  background: var(--color-white);
+  background: none;
+  border: none;
   cursor: pointer;
-  transition:
-    background-color var(--transition-fast),
-    border-color var(--transition-fast),
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
+  color: var(--color-red);
   text-decoration: none;
   flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
+  padding: 4px;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
 }
-/* Ripple effect en hover */
-.share-btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity var(--transition-fast);
-}
-.share-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,.12);
-}
-.share-btn:active { transform: scale(0.92); box-shadow: none; }
-.share-btn svg { flex-shrink: 0; position: relative; z-index: 1; }
+.share-btn:hover { color: var(--color-black); }
+.share-btn:active { opacity: 0.6; }
+.share-btn svg { flex-shrink: 0; display: block; }
 .share-btn__text { display: none; }
 
-/* Facebook */
-.share-btn--facebook {
-  color: #1877f2;
-}
-.share-btn--facebook:hover {
-  background: #1877f2;
-  border-color: #1877f2;
-  color: #ffffff;
-}
-/* WhatsApp */
-.share-btn--whatsapp {
-  color: #25d366;
-}
-.share-btn--whatsapp:hover {
-  background: #25d366;
-  border-color: #25d366;
-  color: #ffffff;
-}
-/* Copiar enlace */
-.share-btn--copy {
-  color: #666666;
-}
-.share-btn--copy:hover {
-  background: #000000;
-  border-color: #000000;
-  color: #ffffff;
-}
-.share-btn--copy.copied {
-  background: #16a34a;
-  border-color: #16a34a;
-  color: #ffffff;
-}
+/* Feedback al copiar enlace */
+.share-btn--copy.copied { color: #16a34a; }
 
 /* ── 24. SIDEBAR ARTÍCULO ─────────────────────────────────────── */
 .article-sidebar {
@@ -1875,7 +1826,6 @@ ul, ol {
   }
   .share-btn {
     flex: 0 0 auto;
-    min-height: 40px;
   }
   .cta-strip {
     flex-direction: row;
@@ -2148,15 +2098,18 @@ ul, ol {
   color: var(--color-gray-300);
   font-size: var(--text-xs);
 }
-/* En mobile: ocultar separadores, apilar en columna */
+/* En mobile: fecha izquierda · lectura derecha · autor en segunda línea */
 @media (max-width: 639px) {
   .article-meta--secondary {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: var(--space-3); /* más aire entre fecha y autor */
   }
-  .article-meta__sep {
-    display: none;
-  }
+  .article-meta__sep { display: none; }
+  .article-meta__author { width: 100%; }
+  /* Iconos más separados para facilitar el toque */
+  .share-block--header .share-block__actions { gap: var(--space-4); }
 }
 /* ── 27. PRINT ────────────────────────────────────────────────── */
 @media print {
@@ -2213,8 +2166,7 @@ ul, ol {
 
 /* Share en el header (mobile) — igual que el share al final */
 .share-block--header {
-  margin-top: var(--space-4);
-  padding-top: var(--space-4);
+  margin-top: var(--space-6); /* más aire entre autor y compartir */
   border-top: none;
   padding: 0;
   margin-bottom: var(--space-2);
