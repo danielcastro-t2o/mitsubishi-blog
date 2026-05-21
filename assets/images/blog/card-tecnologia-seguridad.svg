@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#1a1a1a"/>
+  <rect x="2" y="2" width="796" height="446" fill="none" stroke="#ed0100" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="400" y="195" font-family="Arial, sans-serif" font-size="18" fill="#ed0100" text-anchor="middle" font-weight="bold">REEMPLAZAR IMAGEN</text>
+  <text x="400" y="225" font-family="Arial, monospace" font-size="13" fill="#ffffff" text-anchor="middle">card-tecnologia-seguridad.jpg</text>
+  <text x="400" y="249" font-family="Arial, sans-serif" font-size="11" fill="#888888" text-anchor="middle">800 × 450 px</text>
+  <text x="400" y="273" font-family="Arial, sans-serif" font-size="11" fill="#888888" text-anchor="middle">Card: Tecnología y seguridad modelos Mitsubishi — 800x450px</text>
+</svg>
